@@ -38,7 +38,7 @@ const PackageRow = ( props ) => {
 		contentsType,
 		contentsExplanation,
 		restrictionType,
-		restrictionExplanation,
+		restrictionComments,
 		abandonOnNonDelivery,
 		itn,
 		items,
@@ -89,11 +89,11 @@ const PackageRow = ( props ) => {
 						other: translate( 'Other…' ),
 					} } />
 				{ 'other' === restrictionType && <TextField
-					id={ packageId + '_restrictionExplanation' }
+					id={ packageId + '_restrictionComments' }
 					title={ translate( 'Details' ) }
-					value={ restrictionExplanation || '' }
+					value={ restrictionComments || '' }
 					updateValue={ props.setRestrictionExplanation }
-					error={ errors.restrictionExplanation } /> }
+					error={ errors.restrictionComments } /> }
 			</div>
 		</div>
 
@@ -129,7 +129,7 @@ PackageRow.propTypes = {
 	contentsType: PropTypes.oneOf( [ 'merchandise', 'documents', 'gift', 'sample', 'other' ] ),
 	contentsExplanation: PropTypes.string,
 	restrictionType: PropTypes.oneOf( [ 'none', 'quarantine', 'sanitary_phytosanitary_inspection', 'other' ] ),
-	restrictionExplanation: PropTypes.string,
+	restrictionComments: PropTypes.string,
 	abandonOnNonDelivery: PropTypes.bool,
 	itn: PropTypes.string,
 	items: PropTypes.arrayOf(
