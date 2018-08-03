@@ -49,7 +49,7 @@ export default class InfiniteList extends React.Component {
 	_isMounted = false;
 	smartSetState = smartSetState;
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const url = page.current;
 		let newState, scrollTop;
 
@@ -107,7 +107,7 @@ export default class InfiniteList extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		this.scrollHelper.props = newProps;
 
 		// New item may have arrived, should we change the rendered range?

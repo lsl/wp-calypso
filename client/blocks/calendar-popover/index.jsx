@@ -54,7 +54,7 @@ class CalendarPopover extends Component {
 
 	state = { date: null };
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if ( this.props.selectedDay ) {
 			this.setState( { date: this.props.selectedDay } );
 		}

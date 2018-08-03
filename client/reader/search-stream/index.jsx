@@ -55,7 +55,7 @@ class SearchStream extends React.Component {
 		streamKey: PropTypes.string,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const title = this.getTitle( nextProps );
 		if ( title !== this.state.title ) {
 			this.setState( { title } );

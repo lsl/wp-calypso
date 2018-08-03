@@ -123,7 +123,7 @@ export class PostEditor extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.debouncedSaveRawContent = debounce( this.saveRawContent, 200 );
 		this.throttledAutosave = throttle( this.autosave, 20000 );
 		this.debouncedAutosave = debounce( this.throttledAutosave, 3000 );
@@ -138,7 +138,7 @@ export class PostEditor extends React.Component {
 		} );
 	}
 
-	componentWillUpdate( nextProps, nextState ) {
+	UNSAFE_componentWillUpdate( nextProps, nextState ) {
 		// Cancel pending changes or autosave when user initiates a save. These
 		// will have been reflected in the save payload.
 		if ( nextState.isSaving && ! this.state.isSaving ) {
@@ -174,7 +174,7 @@ export class PostEditor extends React.Component {
 		clearTimeout( this._switchEditorTimeout );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { siteId, postId } = this.props;
 
 		if ( nextProps.siteId !== siteId || nextProps.postId !== postId ) {

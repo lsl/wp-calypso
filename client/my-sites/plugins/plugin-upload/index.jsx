@@ -59,7 +59,7 @@ class PluginUpload extends React.Component {
 		this.goToUpsellPageIfRequired( this.props );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.siteId !== this.props.siteId ) {
 			const { siteId, inProgress } = nextProps;
 			! inProgress && this.props.clearPluginUpload( siteId );

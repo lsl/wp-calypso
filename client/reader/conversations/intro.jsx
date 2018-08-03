@@ -32,7 +32,7 @@ class ConversationsIntro extends React.Component {
 		this.maybeRecordRenderTrack();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			this.props.hasUsedConversations !== nextProps.hasUsedConversations ||
 			this.props.isInternal !== nextProps.isInternal

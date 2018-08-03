@@ -18,7 +18,7 @@ export const siteHasPaidPlan = selectedSite =>
 	selectedSite && selectedSite.plan && ! isFreePlan( selectedSite.plan.product_slug );
 
 export class SitePickerSubmit extends React.Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { stepSectionName, stepName, goToStep, selectedSite } = this.props,
 			hasPaidPlan = siteHasPaidPlan( selectedSite ),
 			{ ID: siteId, slug: siteSlug } = selectedSite;

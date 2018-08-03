@@ -84,7 +84,7 @@ class PhoneInput extends React.PureComponent {
 		this.props.setComponentReference( undefined );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			nextProps.value === this.props.value &&
 			nextProps.countryCode === this.props.countryCode
@@ -98,7 +98,7 @@ class PhoneInput extends React.PureComponent {
 		this.props.onChange( { value, countryCode } );
 	}
 
-	componentWillUpdate( nextProps ) {
+	UNSAFE_componentWillUpdate( nextProps ) {
 		const currentFormat = this.props.value,
 			currentCursorPoint = this.numberInput.selectionStart,
 			nextFormat = nextProps.value;

@@ -40,7 +40,7 @@ const TransactionStepsMixin = {
 		submitTransaction( params );
 	},
 
-	componentWillReceiveProps: function( nextProps ) {
+	UNSAFE_componentWillReceiveProps: function( nextProps ) {
 		const prevStep = this.props.transaction.step,
 			nextStep = nextProps.transaction.step;
 

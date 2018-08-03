@@ -71,11 +71,11 @@ class DomainSearch extends Component {
 		page( '/checkout/' + this.props.selectedSiteSlug );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.checkSiteIsUpgradeable( this.props );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.selectedSiteId !== this.props.selectedSiteId ) {
 			this.checkSiteIsUpgradeable( nextProps );
 		}

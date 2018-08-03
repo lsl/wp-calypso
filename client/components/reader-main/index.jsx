@@ -40,7 +40,7 @@ const setIsReaderPage = add => {
  * Notably, this overrides the background color of the document and is used as a hook by other parts to override styles.
  */
 export default class ReaderMain extends React.Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		activeReaderMainRefCount++;
 		setIsReaderPage( true );
 	}

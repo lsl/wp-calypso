@@ -101,7 +101,7 @@ class DeleteSite extends Component {
 		page( '/settings/general/' + siteSlug );
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { siteId, siteExists } = this.props;
 
 		if ( siteId && siteExists && ! nextProps.siteExists ) {

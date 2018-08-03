@@ -58,7 +58,7 @@ export class CreditCardPaymentBox extends React.Component {
 		this.timer = null;
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			! this.submitting( this.props.transactionStep ) &&
 			this.submitting( nextProps.transactionStep )

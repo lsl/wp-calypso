@@ -39,7 +39,7 @@ class ReaderSiteNotificationSettings extends Component {
 		selected: this.props.emailDeliveryFrequency,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.emailDeliveryFrequency !== this.props.emailDeliveryFrequency ) {
 			this.setState( { selected: nextProps.emailDeliveryFrequency } );
 		}

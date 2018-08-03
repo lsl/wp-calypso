@@ -58,7 +58,7 @@ class DnsAddNew extends React.Component {
 		} );
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.formStateController = formState.Controller( {
 			initialFields: this.getFieldsForType( this.state.type ),
 			onNewState: this.setFormState,

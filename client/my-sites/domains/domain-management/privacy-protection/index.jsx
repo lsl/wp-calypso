@@ -35,11 +35,11 @@ class PrivacyProtection extends Component {
 		translate: PropTypes.func.isRequired,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.ensurePageCanLoad();
 	}
 
-	componentWillUpdate() {
+	UNSAFE_componentWillUpdate() {
 		this.ensurePageCanLoad();
 	}
 

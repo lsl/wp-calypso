@@ -123,7 +123,7 @@ class HandleEmailedLinkForm extends React.Component {
 		user.clear( () => ( window.location.href = url ) );
 	};
 
-	componentWillUpdate( nextProps, nextState ) {
+	UNSAFE_componentWillUpdate( nextProps, nextState ) {
 		const { authError, isAuthenticated, isFetching } = nextProps;
 
 		if ( ! nextState.hasSubmitted || isFetching ) {

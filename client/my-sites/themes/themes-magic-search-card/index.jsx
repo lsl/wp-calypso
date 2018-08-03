@@ -57,7 +57,7 @@ class ThemesMagicSearchCard extends React.Component {
 
 	setSearchInputRef = search => ( this.searchInputRef = search );
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.onResize = debounce( () => {
 			this.setState( { isMobile: isMobile() } );
 		}, 250 );

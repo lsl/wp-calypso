@@ -29,7 +29,7 @@ import {
 import PageViewTracker from 'lib/analytics/page-view-tracker';
 
 class Courses extends Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.fetchCoursesIfNeeded();
 	}
 

@@ -40,7 +40,7 @@ import { preventWidows } from 'lib/formatting';
 import scrollTo from 'lib/scroll-to';
 
 export class SiteSettingsFormGeneral extends Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this._showWarning( this.props.site );
 	}
 

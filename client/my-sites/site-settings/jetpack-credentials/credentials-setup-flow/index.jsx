@@ -22,7 +22,7 @@ class CredentialsSetupFlow extends Component {
 		siteId: PropTypes.number,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.setState( { currentStep: 'start', showPopover: false } );
 	}
 

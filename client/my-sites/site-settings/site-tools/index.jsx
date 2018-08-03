@@ -42,7 +42,7 @@ class SiteTools extends Component {
 		showStartOverDialog: false,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.purchasesError ) {
 			notices.error( nextProps.purchasesError );
 		}

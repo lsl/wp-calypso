@@ -50,14 +50,14 @@ class GoogleVoucherDetails extends Component {
 		};
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const voucher = this.getVoucher();
 		if ( voucher && voucher.status === 'assigned' ) {
 			this.setState( { step: CODE_REDEEMED } );
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! nextProps.googleAdCredits ) {
 			return null;
 		}

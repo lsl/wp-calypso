@@ -66,7 +66,7 @@ class SiteImporterInputPane extends React.Component {
 	};
 
 	// TODO This can be improved if we move to Redux.
-	componentWillReceiveProps = nextProps => {
+	UNSAFE_componentWillReceiveProps = nextProps => {
 		// TODO test on a site without posts
 		const newImporterState = nextProps.importerStatus.importerState;
 		const oldImporterState = this.props.importerStatus.importerState;

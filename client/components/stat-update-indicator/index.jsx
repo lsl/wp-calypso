@@ -31,7 +31,7 @@ const StatUpdateIndicator = createReactClass( {
 		this.clearTheUpdate();
 	},
 
-	componentWillReceiveProps: function( nextProps ) {
+	UNSAFE_componentWillReceiveProps: function( nextProps ) {
 		if ( this.props.updateOn !== nextProps.updateOn ) {
 			clearTimeout( this.clearingUpdateTimeout );
 

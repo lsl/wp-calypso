@@ -36,7 +36,7 @@ class RewindFormCreds extends Component {
 	 *
 	 * @param {object} nextProps Props received by component for next update.
 	 */
-	componentWillUpdate( nextProps ) {
+	UNSAFE_componentWillUpdate( nextProps ) {
 		if ( nextProps.rewindIsNowActive ) {
 			SignupActions.submitSignupStep(
 				{

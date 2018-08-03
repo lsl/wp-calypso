@@ -56,7 +56,7 @@ export class EditTeamMemberForm extends Component {
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.siteId !== this.props.siteId || nextProps.userLogin !== this.props.userLogin ) {
 			this.refreshUser( nextProps );
 		}

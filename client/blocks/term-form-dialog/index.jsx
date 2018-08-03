@@ -182,7 +182,7 @@ class TermFormDialog extends Component {
 		);
 	}
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		if (
 			this.props.term !== newProps.term ||
 			( this.props.showDialog !== newProps.showDialog && newProps.showDialog )

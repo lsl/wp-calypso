@@ -15,7 +15,7 @@ import SiteSelector from 'components/site-selector';
 import StepWrapper from 'signup/step-wrapper';
 
 class SitePicker extends Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.state = {
 			siteSlug: null,
 		};

@@ -42,7 +42,7 @@ const EmailForwardingAddNew = createReactClass( {
 		};
 	},
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.formStateController = formState.Controller( {
 			initialFields: this.getInitialState().fields,
 			onNewState: this.setFormState,

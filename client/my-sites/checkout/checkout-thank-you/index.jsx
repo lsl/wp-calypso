@@ -148,7 +148,7 @@ export class CheckoutThankYou extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.redirectIfThemePurchased();
 
 		if (

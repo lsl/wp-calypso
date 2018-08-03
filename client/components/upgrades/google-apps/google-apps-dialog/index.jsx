@@ -46,7 +46,7 @@ class GoogleAppsDialog extends React.Component {
 		validationErrors: null,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if ( this.props.initialState ) {
 			this.setState( this.props.initialState );
 		}

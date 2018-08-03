@@ -109,7 +109,7 @@ export class HelpContactForm extends React.PureComponent {
 		this.debouncedQandA = debounce( this.doQandASearch, 500 );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! nextProps.valueLink.value || isEqual( nextProps.valueLink.value, this.state ) ) {
 			return;
 		}

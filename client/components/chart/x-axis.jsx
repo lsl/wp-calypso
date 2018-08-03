@@ -41,7 +41,7 @@ export default class extends React.Component {
 		window.removeEventListener( 'resize', this.resizeThrottled );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.resize( nextProps );
 	}
 

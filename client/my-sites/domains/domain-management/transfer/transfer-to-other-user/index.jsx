@@ -58,7 +58,7 @@ class TransferOtherUser extends React.Component {
 		this.handleConfirmTransferDomain = this.handleConfirmTransferDomain.bind( this );
 	}
 
-	componentWillUpdate( nextProps, nextState ) {
+	UNSAFE_componentWillUpdate( nextProps, nextState ) {
 		if ( nextState && ! nextState.selectedUserId ) {
 			const defaultUser = head( this.filterAvailableUsers( nextProps.users ) );
 			if ( defaultUser ) {

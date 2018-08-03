@@ -81,7 +81,7 @@ const SecurePaymentForm = createReactClass( {
 		return null;
 	},
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.transaction.step.name !== 'before-submit' ) {
 			return;
 		}
@@ -102,7 +102,7 @@ const SecurePaymentForm = createReactClass( {
 		return this.props.cards[ 0 ];
 	},
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.setInitialPaymentDetails();
 	},
 

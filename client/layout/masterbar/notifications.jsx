@@ -36,14 +36,14 @@ class MasterbarItemNotifications extends Component {
 		animationState: 0,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.user = this.props.user.get();
 		this.setState( {
 			newNote: this.user && this.user.has_unseen_notes,
 		} );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { isNotificationsOpen: isOpen, recordOpening } = nextProps;
 
 		if ( ! this.props.isNotificationsOpen && isOpen ) {

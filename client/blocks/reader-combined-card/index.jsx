@@ -50,7 +50,7 @@ class ReaderCombinedCardComponent extends React.Component {
 		this.recordRenderTrack();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			this.props.postKey.feedId !== nextProps.postKey.feedId ||
 			this.props.postKey.blogId !== nextProps.postKey.blogId ||

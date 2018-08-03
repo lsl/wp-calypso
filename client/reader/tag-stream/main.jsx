@@ -60,7 +60,7 @@ class TagStream extends React.Component {
 		this._isMounted = false;
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.encodedTagSlug !== this.props.encodedTagSlug ) {
 			this.checkForTwemoji( nextProps );
 		}

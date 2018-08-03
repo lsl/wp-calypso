@@ -62,7 +62,7 @@ class RedirectWhenLoggedIn extends React.Component {
 		} catch ( ex ) {}
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { currentUser, delayAtMount } = this.props;
 
 		if ( this.isUserLoggedIn( currentUser ) ) {

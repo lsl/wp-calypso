@@ -48,7 +48,7 @@ class SetupWizard extends Component {
 		this.props.saveSetupStatus( siteId, false );
 	}
 
-	componentWillReceiveProps( { siteId } ) {
+	UNSAFE_componentWillReceiveProps( { siteId } ) {
 		if ( ! siteId || this.props.siteId === siteId ) {
 			return;
 		}

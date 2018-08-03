@@ -36,7 +36,7 @@ class RewindMigrate extends Component {
 	 *
 	 * @param {object} nextProps Props received by component for next update.
 	 */
-	componentWillUpdate( nextProps ) {
+	UNSAFE_componentWillUpdate( nextProps ) {
 		if ( this.props.rewindIsNowActive !== nextProps.rewindIsNowActive ) {
 			SignupActions.submitSignupStep(
 				{

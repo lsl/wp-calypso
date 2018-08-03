@@ -67,7 +67,7 @@ class AccountDialog extends Component {
 		};
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		// When the account dialog is closed, reset the selected account so
 		// that the state doesn't leak into a future dialog
 		if ( ! nextProps.visible ) {

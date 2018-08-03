@@ -104,7 +104,7 @@ class ReaderShare extends React.Component {
 		this.shareButton = React.createRef();
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.mounted = true;
 	}
 

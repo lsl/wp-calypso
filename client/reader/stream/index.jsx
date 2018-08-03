@@ -165,7 +165,7 @@ class ReaderStream extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { streamKey } = nextProps;
 		if ( streamKey !== this.props.streamKey ) {
 			this.props.resetCardExpansions();

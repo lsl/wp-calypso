@@ -76,14 +76,14 @@ class MediaLibrary extends Component {
 		disabledDataSources: [],
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if ( needsKeyring( this.props ) ) {
 			// Are we connected to anything yet?
 			this.props.requestKeyringConnections();
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( needsKeyring( nextProps ) && this.props.source === '' ) {
 			// If we have changed to an external data source then check for a keyring connection
 			this.props.requestKeyringConnections();

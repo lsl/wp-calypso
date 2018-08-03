@@ -49,11 +49,11 @@ class CancelPrivacyProtection extends Component {
 
 	state = this.constructor.initialState;
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.redirectIfDataIsInvalid();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.redirectIfDataIsInvalid( nextProps );
 	}
 

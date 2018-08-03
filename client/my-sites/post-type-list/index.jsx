@@ -73,7 +73,7 @@ class PostTypeList extends Component {
 		window.addEventListener( 'scroll', this.maybeLoadNextPageThrottled );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			! isEqual( this.props.query, nextProps.query ) ||
 			! isEqual( this.props.siteId, nextProps.siteId )

@@ -25,11 +25,11 @@ export default class DocsSelectorsSingle extends Component {
 
 	state = {};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.request( this.props.selector );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.selector !== this.props.selector ) {
 			this.request( nextProps.selector );
 		}

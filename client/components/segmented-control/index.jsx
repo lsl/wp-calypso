@@ -57,7 +57,7 @@ class SegmentedControl extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.id = _instance;
 		_instance++;
 	}

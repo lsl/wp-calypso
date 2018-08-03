@@ -15,7 +15,7 @@ import humanDate from 'lib/human-date';
 export default class TimeSince extends PureComponent {
 	smartSetState = smartSetState;
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.update();
 	}
 
@@ -23,7 +23,7 @@ export default class TimeSince extends PureComponent {
 		ticker.on( 'tick', this.update );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.update( nextProps.date );
 	}
 

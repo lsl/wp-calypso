@@ -62,7 +62,7 @@ class EditContactInfoFormCard extends React.Component {
 		);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.setState( {
 			transferLock: true,
 		} );

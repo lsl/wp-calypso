@@ -278,7 +278,7 @@ class UploadImage extends Component {
 		onImageRemove( uploadedImage );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		// use defaultImage as uploadedImage if set.
 		const { defaultImage } = this.props;
 		if ( defaultImage ) {

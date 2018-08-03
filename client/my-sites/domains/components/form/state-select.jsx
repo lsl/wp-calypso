@@ -27,7 +27,7 @@ import scrollIntoViewport from 'lib/scroll-into-viewport';
 class StateSelect extends Component {
 	static instances = 0;
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.instance = ++this.constructor.instances;
 	}
 

@@ -35,7 +35,7 @@ class SecondaryCart extends Component {
 		cartVisible: false,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.dispatchToken = Dispatcher.register(
 			function( payload ) {
 				if ( payload.action.type === upgradesActionTypes.CART_ON_MOBILE_SHOW ) {

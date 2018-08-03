@@ -213,7 +213,7 @@ export default class extends React.Component {
 
 	_editor = null;
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this._id = 'tinymce-' + _instance;
 		_instance++;
 	}

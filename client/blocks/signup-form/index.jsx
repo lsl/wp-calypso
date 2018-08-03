@@ -116,7 +116,7 @@ class SignupForm extends Component {
 		analytics.tracks.recordEvent( 'calypso_signup_back_link_click' );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		debug( 'Mounting the SignupForm React component.' );
 		this.formStateController = new formState.Controller( {
 			initialFields: this.getInitialFields(),
@@ -173,7 +173,7 @@ class SignupForm extends Component {
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( this.props.step && nextProps.step && this.props.step.status !== nextProps.step.status ) {
 			this.maybeRedirectToSocialConnect( nextProps );
 		}

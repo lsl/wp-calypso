@@ -57,7 +57,7 @@ class PostSchedule extends Component {
 		showTooltip: false,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if ( ! this.props.selectedDay ) {
 			return this.setState( {
 				localizedDate: null,
@@ -72,7 +72,7 @@ class PostSchedule extends Component {
 		} );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( this.props.selectedDay === nextProps.selectedDay ) {
 			return;
 		}

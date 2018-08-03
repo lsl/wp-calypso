@@ -41,7 +41,7 @@ class NameServers extends React.Component {
 		nameservers: this.props.nameservers.hasLoadedFromServer ? this.props.nameservers.list : null,
 	};
 
-	componentWillReceiveProps( props ) {
+	UNSAFE_componentWillReceiveProps( props ) {
 		this.setStateWhenLoadedFromServer( props );
 	}
 

@@ -38,7 +38,7 @@ class CurrentSite extends Component {
 		anySiteSelected: PropTypes.array,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		CartStore.on( 'change', this.showStaleCartItemsNotice );
 	}
 

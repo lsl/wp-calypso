@@ -53,7 +53,7 @@ export default class Draggable extends Component {
 		this.update = this.update.bind( this );
 	}
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		if ( this.state.x !== newProps.x || this.state.y !== newProps.y ) {
 			this.setState( {
 				x: newProps.x,

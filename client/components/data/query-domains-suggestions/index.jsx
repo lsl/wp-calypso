@@ -37,11 +37,11 @@ class QueryDomainsSuggestions extends Component {
 		}
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.requestDomainsSuggestions();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if (
 			nextProps.requestingDomainsSuggestions ||
 			( this.props.query === nextProps.query &&

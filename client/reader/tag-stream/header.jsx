@@ -46,7 +46,7 @@ class TagStreamHeader extends React.Component {
 		chosenTagImage: this.pickTagImage(),
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.tagImages !== this.props.tagImages ) {
 			this.setState( { chosenTagImage: this.pickTagImage( nextProps ) } );
 		}

@@ -76,7 +76,7 @@ class PageSetup extends Component {
 		translate: PropTypes.func.isRequired,
 	};
 
-	componentWillReceiveProps( { goToNextStep, slug } ) {
+	UNSAFE_componentWillReceiveProps( { goToNextStep, slug } ) {
 		if ( ! goToNextStep ) {
 			return;
 		}

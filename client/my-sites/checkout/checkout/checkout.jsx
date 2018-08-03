@@ -82,7 +82,7 @@ export class Checkout extends React.Component {
 		cartSettled: false,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		resetTransaction();
 		this.props.recordApplePayStatus();
 	}
@@ -104,7 +104,7 @@ export class Checkout extends React.Component {
 		this.props.loadTrackingTool( 'HotJar' );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! this.props.cart.hasLoadedFromServer && nextProps.cart.hasLoadedFromServer ) {
 			if ( this.props.product ) {
 				this.addProductToCart();

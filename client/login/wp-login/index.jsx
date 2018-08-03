@@ -54,7 +54,7 @@ export class Login extends React.Component {
 		this.recordPageView( this.props );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( this.props.twoFactorAuthType !== nextProps.twoFactorAuthType ) {
 			this.recordPageView( nextProps );
 		}

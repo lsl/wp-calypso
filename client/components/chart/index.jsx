@@ -56,7 +56,7 @@ class Chart extends React.Component {
 		window.removeEventListener( 'resize', this.resize );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( this.props.loading && ! nextProps.loading ) {
 			return this.resize( nextProps );
 		}

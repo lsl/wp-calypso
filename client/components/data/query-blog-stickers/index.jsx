@@ -18,11 +18,11 @@ class QueryBlogStickers extends Component {
 		blogId: PropTypes.number.isRequired,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.props.listBlogStickers( this.props.blogId );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.props.listBlogStickers( nextProps.blogId );
 	}
 

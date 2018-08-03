@@ -43,7 +43,7 @@ class PagesMain extends React.Component {
 		perPage: 20,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this._setWarning( this.props.site );
 	}
 
@@ -51,7 +51,7 @@ class PagesMain extends React.Component {
 		debug( 'Pages React component mounted.' );
 	}
 
-	componentWillUpdate() {
+	UNSAFE_componentWillUpdate() {
 		this._setWarning( this.props.site );
 	}
 

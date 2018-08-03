@@ -25,11 +25,11 @@ export default class DocsSelectorsSearch extends Component {
 
 	state = {};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.request( this.props.search );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.search !== this.props.search ) {
 			this.request( nextProps.search );
 		}

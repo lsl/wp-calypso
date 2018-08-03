@@ -40,7 +40,7 @@ class StatModuleChartTabs extends Component {
 		};
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const activeTab = this.getActiveTab( nextProps );
 		const activeCharts = activeTab.legendOptions ? activeTab.legendOptions.slice() : [];
 		if ( activeTab !== this.state.activeTab ) {

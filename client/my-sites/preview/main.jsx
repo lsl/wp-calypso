@@ -34,7 +34,7 @@ class PreviewMain extends React.Component {
 		showingClose: false,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.updateUrl();
 		this.updateLayout();
 	}

@@ -75,7 +75,7 @@ class ImageEditor extends React.Component {
 		noticeStatus: 'is-info',
 	};
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		const { media: currentMedia } = this.props;
 
 		if ( newProps.media && ! isEqual( newProps.media, currentMedia ) ) {

@@ -31,7 +31,7 @@ class RandomThemesBanner extends PureComponent {
 		} );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! includes( Object.keys( nextProps.banners ), this.state.banner ) ) {
 			this.setState( {
 				banner: sample( Object.keys( nextProps.banners ) ),

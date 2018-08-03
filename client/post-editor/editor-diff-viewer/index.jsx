@@ -69,7 +69,7 @@ class EditorDiffViewer extends PureComponent {
 		this.tryScrollingToFirstChangeOrTop();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.selectedRevisionId !== this.props.selectedRevisionId ) {
 			this.setState( { changeOffsets: [] } );
 		}

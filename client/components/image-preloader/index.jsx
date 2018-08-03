@@ -30,11 +30,11 @@ export default class ImagePreloader extends React.Component {
 		status: LoadStatus.PENDING,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.createLoader();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.src !== this.props.src ) {
 			this.createLoader( nextProps );
 		}

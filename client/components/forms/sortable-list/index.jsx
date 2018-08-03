@@ -36,7 +36,7 @@ class SortableList extends React.Component {
 		position: null,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		debug( 'Mounting ' + this.constructor.displayName + ' React component.' );
 	}
 

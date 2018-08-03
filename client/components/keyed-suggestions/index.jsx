@@ -67,11 +67,11 @@ class KeyedSuggestions extends React.Component {
 		} );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.setInitialState( this.props.input );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.input !== this.props.input ) {
 			this.setInitialState( nextProps.input );
 		}

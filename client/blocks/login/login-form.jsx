@@ -105,7 +105,7 @@ export class LoginForm extends Component {
 		}
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { disableAutoFocus } = this.props;
 
 		if (

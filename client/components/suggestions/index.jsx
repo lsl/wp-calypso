@@ -32,7 +32,7 @@ class Suggestions extends Component {
 		suggestionPosition: 0,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( isEqual( nextProps.suggestions, this.props.suggestions ) ) {
 			return;
 		}

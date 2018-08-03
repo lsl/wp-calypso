@@ -23,7 +23,7 @@ class QueryUsers extends Component {
 		userIds: PropTypes.arrayOf( PropTypes.number ),
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.request();
 	}
 

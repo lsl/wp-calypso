@@ -22,7 +22,7 @@ class FollowingIntro extends React.Component {
 		this.recordRenderTrack();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( this.props.isNewReader !== nextProps.isNewReader ) {
 			this.recordRenderTrack( nextProps );
 		}

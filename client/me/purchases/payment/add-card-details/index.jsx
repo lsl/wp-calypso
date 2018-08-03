@@ -72,11 +72,11 @@ class AddCardDetails extends Component {
 		page( managePurchase( this.props.siteSlug, id ) );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.redirectIfDataIsInvalid();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		this.redirectIfDataIsInvalid( nextProps );
 	}
 

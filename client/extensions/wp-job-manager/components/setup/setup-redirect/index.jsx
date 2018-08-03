@@ -25,7 +25,7 @@ class SetupRedirect extends Component {
 		siteSlug: PropTypes.string,
 	};
 
-	componentWillReceiveProps( { isFetching, showWizard, siteSlug } ) {
+	UNSAFE_componentWillReceiveProps( { isFetching, showWizard, siteSlug } ) {
 		if ( this.props.isFetching && ! isFetching && showWizard ) {
 			page.redirect( `${ SetupPath }/${ siteSlug }` );
 		}

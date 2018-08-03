@@ -41,7 +41,7 @@ class JobSubmission extends Component {
 		translate: PropTypes.func,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { generateUsername } = nextProps;
 
 		if ( generateUsername === this.props.generateUsername ) {

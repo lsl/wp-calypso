@@ -29,7 +29,7 @@ class ErrorNotice extends Component {
 		twoFactorAuthRequestError: PropTypes.object,
 	};
 
-	componentWillReceiveProps = nextProps => {
+	UNSAFE_componentWillReceiveProps = nextProps => {
 		const receiveNewError = key => {
 			return this.props[ key ] !== nextProps[ key ];
 		};

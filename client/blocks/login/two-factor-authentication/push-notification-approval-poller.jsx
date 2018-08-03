@@ -30,7 +30,7 @@ class PushNotificationApprovalPoller extends Component {
 		this.props.stopPollAppPushAuth();
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! this.props.pushSuccess && nextProps.pushSuccess ) {
 			this.props.onSuccess();
 		}

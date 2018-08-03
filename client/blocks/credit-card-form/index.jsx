@@ -77,7 +77,7 @@ export class CreditCardForm extends Component {
 		'brand',
 	];
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const fields = this.fieldNames.reduce( ( result, fieldName ) => {
 			return { ...result, [ fieldName ]: '' };
 		}, {} );

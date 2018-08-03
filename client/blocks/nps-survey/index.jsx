@@ -83,7 +83,7 @@ class NpsSurvey extends Component {
 		}, 0 );
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		analytics.mc.bumpStat( 'calypso_nps_survey', 'survey_displayed' );
 		analytics.tracks.recordEvent( 'calypso_nps_survey_displayed' );
 	}

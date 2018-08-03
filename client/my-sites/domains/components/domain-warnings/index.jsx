@@ -1077,7 +1077,7 @@ export class DomainWarnings extends React.PureComponent {
 		);
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		if ( ! this.props.domains && ! this.props.domain ) {
 			debug( 'You need provide either "domains" or "domain" property to this component.' );
 		}

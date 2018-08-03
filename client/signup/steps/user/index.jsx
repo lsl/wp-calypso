@@ -60,7 +60,7 @@ export class UserStep extends Component {
 		subHeaderText: '',
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( nextProps.step && 'invalid' === nextProps.step.status ) {
 			this.setState( { submitting: false } );
 		}
@@ -73,7 +73,7 @@ export class UserStep extends Component {
 		}
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { oauth2Signup, initialContext } = this.props;
 		const clientId = get( initialContext, 'query.oauth2_client_id', null );
 

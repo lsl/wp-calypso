@@ -21,11 +21,11 @@ class QuerySettings extends Component {
 		siteId: PropTypes.number,
 	};
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.fetchSettings( this.props );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const { siteId } = this.props;
 
 		if ( ! nextProps.siteId || siteId === nextProps.siteId ) {

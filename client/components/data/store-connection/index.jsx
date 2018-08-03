@@ -23,7 +23,7 @@ class StoreConnection extends React.Component {
 		this.addStoreListeners( this.props.stores );
 	}
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		if ( ! isEqual( this.props, nextProps ) ) {
 			this.removeStoreListeners( this.props.stores );
 			this.addStoreListeners( nextProps.stores );

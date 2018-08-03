@@ -115,7 +115,7 @@ export class FullPostView extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		if ( newProps.shouldShowComments ) {
 			this.hasScrolledToCommentAnchor = false;
 			this.checkForCommentAnchor();

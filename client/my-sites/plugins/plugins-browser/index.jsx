@@ -72,7 +72,7 @@ export class PluginsBrowser extends Component {
 		this.WrappedSearch = props => <Search { ...props } />;
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.reinitializeSearch();
 	}
 
@@ -90,7 +90,7 @@ export class PluginsBrowser extends Component {
 		PluginsListStore.removeListener( 'change', this.refreshLists );
 	}
 
-	componentWillReceiveProps( newProps ) {
+	UNSAFE_componentWillReceiveProps( newProps ) {
 		this.refreshLists( newProps.search );
 	}
 
