@@ -49,10 +49,16 @@ jest.mock( '../terms-of-service', () => {
 	const react = require( 'react' );
 	return class TermsOfService extends react.Component {};
 } );
+
+import TermsOfService from '../terms-of-service';
+
 jest.mock( '../payment-chat-button', () => {
 	const react = require( 'react' );
 	return class PaymentChatButton extends react.Component {};
 } );
+
+import PaymentChatButton from '../payment-chat-button';
+
 
 // Gets rid of warnings such as 'UnhandledPromiseRejectionWarning: Error: No available storage method found.'
 jest.mock( 'lib/user', () => () => {} );
@@ -76,11 +82,12 @@ const defaultProps = {
 };
 
 describe( 'WechatPaymentBox - Pay Box', () => {
-	test( 'should not blow up and have proper CSS class', () => {
+	test( 'has correct components and css', () => {
 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
 		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
 		expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
-		expect( wrapper.find( 'TermsOfService' ) ).toHaveLength( 1 );
+		expect( wrapper.find( '[name="name"]' ) ).toHaveLength( 1 );
+		expect( wrapper.contains( <TermsOfService /> ) );
 	} );
 
 	const businessPlans = [ PLAN_BUSINESS, PLAN_BUSINESS_2_YEARS ];
@@ -95,7 +102,7 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 				},
 			};
 			const wrapper = shallow( <WechatPaymentBox { ...props } /> );
-			expect( wrapper.find( 'PaymentChatButton' ) ).toHaveLength( 1 );
+			expect( wrapper.contains( <PaymentChatButton /> ) );
 		} );
 	} );
 
@@ -109,7 +116,7 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 				},
 			};
 			const wrapper = shallow( <WechatPaymentBox { ...props } /> );
-			expect( wrapper.find( 'PaymentChatButton' ) ).toHaveLength( 0 );
+			expect( ! wrapper.contains( <PaymentChatButton /> ) );
 		} );
 	} );
 
@@ -137,31 +144,95 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 				},
 			};
 			const wrapper = shallow( <WechatPaymentBox { ...props } /> );
-			expect( wrapper.find( 'PaymentChatButton' ) ).toHaveLength( 0 );
+			expect( ! wrapper.contains( <PaymentChatButton /> ) );
 		} );
-	} );
-
-	test( 'should render fields required for WeChat Pay', () => {
-		const props = {	...defaultProps	};
-		const wrapper = shallow( <WechatPaymentBox { ...props } /> );
-		expect( wrapper.find( '[name="name"]' ) ).toHaveLength( 1 );
 	} );
 } );
 
-describe( 'WechatPaymentBox - Redirect', () => {
-	// test( 'should not blow up and have proper CSS class', () => {
-	// 	const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
-	// 	expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
-	// 	expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
-	// 	expect( wrapper.find( 'TermsOfService' ) ).toHaveLength( 1 );
-	// } );
-});
+describe( 'WechatPaymentBox - Source Response Handler', () => {
+	test( 'redirect on redirect_url', () => {
+		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
 
-describe( 'WechatPaymentBox - QR Code Display', () => {
-	// test( 'should not blow up and have proper CSS class', () => {
-	// 	const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
-	// 	expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
-	// 	expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
-	// 	expect( wrapper.find( 'TermsOfService' ) ).toHaveLength( 1 );
-	// } );
+		console.log(wrapper.instance().handleTransactionResponse);
+
+		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
+		expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
+		expect( wrapper.contains( <TermsOfService /> ) );
+	} );
+
+	test( 'enable pay button on errors' , () => {
+		//
+	});
+
+	test( 'disable pay button on redirect' , () => {
+		//
+	});
+
+	test( 'set redirectUrl on desktop' , () => {
+		//
+	});
+
+	test( 'redirect on mobile' , () => {
+		//
+	});
+
+// handleTransactionResponse(error, result) {
+// 		if ( error ) {
+// 			this.setState( { submitEnabled: true } );
+
+// 			if ( error.message ) {
+// 				notices.error( error.message );
+// 			} else {
+// 				notices.error( translate( "We've encountered a problem. Please try again later." ) );
+// 			}
+
+// 			return;
+// 		}
+
+// 		if ( ! result || ! result.redirect_url ) {
+// 			notices.error( translate( "We've encountered a problem. Please try again later." ) );
+
+// 			this.setState( { submitEnabled: true } );
+
+// 			return;
+// 		}
+
+// 		analytics.ga.recordEvent( 'Upgrades', 'Clicked Checkout With Wechat Payment Button' );
+// 		analytics.tracks.recordEvent( 'calypso_checkout_with_redirect_wechat' );
+
+// 		// The Wechat payment type only redirect when on mobile as redirect urls
+// 		// are Wechat Pay mobile application urls: e.g. weixin://wxpay/bizpayurl?pr=RaXzhu4
+// 		const userAgent = new UserAgent().parse( navigator.userAgent );
+
+// 		if ( userAgent.isMobile ) {
+// 			notices.info( translate( 'Redirecting you to the WeChat Pay mobile app to finalize payment.' ) );
+
+// 			this.setState( { submitEnabled: false } );
+
+// 			location.href = result.redirect_url;
+
+// 			// Redirect on mobile
+// 			return;
+// 		}
+
+// 		// Display on desktop
+// 		notices.info( translate( 'Please scan the WeChat Payment barcode.', {
+// 			comment: 'Instruction to scan the on screen barcode.'
+// 		} ) );
+
+// 		this.setState( {
+// 			redirectUrl: result.redirect_url,
+// 			orderId: result.order_id,
+// 			submitEnabled: false,
+// 		} );
+// 	}
+
+// describe( 'WechatPaymentBox - QR Code Display', () => {
+// 	test( 'display a qr code', () => {
+// 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+// 		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
+// 		expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
+// 		expect( wrapper.find( 'TermsOfService' ) ).toHaveLength( 1 );
+// 	} );
+
 });
