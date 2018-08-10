@@ -124,10 +124,10 @@ export class WechatPaymentBox extends PureComponent {
 		};
 
 		// get the redirect URL from rest endpoint
-		wpcom.undocumented().transactions( 'POST', dataForApi, this.handleTransactionResponse);
+		wpcom.undocumented().transactions( 'POST', dataForApi, this.handleSourceSetupResponse);
 	}
 
-	handleTransactionResponse(error, result) {
+	handleSourceSetupResponse(error, result) {
 		if ( error ) {
 			this.setState( { submitEnabled: true } );
 
