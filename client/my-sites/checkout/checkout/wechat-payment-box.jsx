@@ -156,8 +156,6 @@ export class WechatPaymentBox extends PureComponent {
 		if ( userAgent.isMobile ) {
 			notices.info( translate( 'Redirecting you to the WeChat Pay mobile app to finalize payment.' ) );
 
-			this.setState( { submitEnabled: false } );
-
 			location.href = result.redirect_url;
 
 			// Redirect on mobile
@@ -172,7 +170,6 @@ export class WechatPaymentBox extends PureComponent {
 		this.setState( {
 			redirectUrl: result.redirect_url,
 			orderId: result.order_id,
-			submitEnabled: false,
 		} );
 	}
 
