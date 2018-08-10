@@ -1,5 +1,3 @@
-/** @format */
-
 /**
  * External dependencies
  */
@@ -283,20 +281,18 @@ export class WechatPaymentBox extends PureComponent {
 	}
 }
 
-export default flowRight(
-	localize,
-	connect(
-		( state ) =>  {
-			const { receiptId, processingStatus } = getOrderTransaction( state, state.orderId );
+export default connect(
+	( state ) =>  {
+		const { receiptId, processingStatus } = getOrderTransaction( state, state.orderId );
 
-			return {
-				transactionReceiptId: receiptId,
-				transactionStatus: processingStatus,
-				transactionError: getOrderTransactionError( state, state.orderId ),
-			}
-		},
-		{
-			showErrorNotice: errorNotice,
+		return {
+			transactionReceiptId: receiptId,
+			transactionStatus: processingStatus,
+			transactionError: getOrderTransactionError( state, state.orderId ),
 		}
-	)
-)( WechatPaymentBox );
+	},
+	{
+		showErrorNotice: errorNotice,
+	}
+)
+)( localize ( WechatPaymentBox ) );
