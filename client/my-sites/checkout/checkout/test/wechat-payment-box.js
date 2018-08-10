@@ -78,7 +78,7 @@ const defaultProps = {
 	],
 	paymentType: 'default',
 	transaction: {},
-	redirectTo: () => 'http://here',
+	redirectTo: identity
 };
 
 describe( 'WechatPaymentBox - Pay Box', () => {
@@ -151,31 +151,33 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 
 describe( 'WechatPaymentBox - Source Response Handler', () => {
 	test( 'redirect on mobile', () => {
-		navigator.userAgent = "iOS safari";
+		Object.defineProperty( navigator, "userAgent", {	value: "ios", writable: true } );
+		location.assign = jest.fn(); // https://github.com/facebook/jest/issues/890#issuecomment-295939071
+
 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
 		const instance = wrapper.instance();
-
-		location.href = 'https://test';
-
-		instance.handleTransactionResponse( null, {  redirect_url: 'https://redirect', order_id: 1 } );
-
-		expect( location.href ).toEqual( 'https://redirect' );
-
-	} );
-	test( 'no redirect on desktop', () => {
-		navigator.userAgent = "windows";
-		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
-		const instance = wrapper.instance();
-
-		location.href = 'https://test';
 
 		const response = {  redirect_url: 'https://redirect', order_id: 1 };
 
 		instance.handleTransactionResponse( null, response );
 
-		expect( location.href ).toEqual( 'https://test' );
+		expect( location.assign ).toHaveBeenCalledWith( response.redirect_url );
+	} );
 
-		expect( instance.state.redirectUrl ).toEqual( response.redirectUrl );
+	test( 'no redirect on desktop', () => {
+		Object.defineProperty( navigator, "userAgent", {	value: "windows", writable: true } );
+		location.assign = jest.fn();
+
+		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+		const instance = wrapper.instance();
+
+		const response = {  redirect_url: 'https://redirect', order_id: 1 };
+
+
+		instance.handleTransactionResponse( null, response );
+
+		expect( location.assign ).not.toHaveBeenCalledWith( response.redirect_url );
+		expect( instance.state.redirectUrl ).toEqual( response.redirect_url );
 		expect( instance.state.orderId ).toEqual( response.order_id );
 
 	} );
@@ -191,10 +193,13 @@ describe( 'WechatPaymentBox - Source Response Handler', () => {
 
 // describe( 'WechatPaymentBox - QR Code Display', () => {
 // 	test( 'display a qr code', () => {
-// 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
-// 		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
-// 		expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
-// 		expect( wrapper.find( 'TermsOfService' ) ).toHaveLength( 1 );
-// 	} );
 
-});
+// 		// const wrapper = shallow( <WechatPaymentBox { ...props } /> );
+
+// 		// expect( wrapper.contains( <PaymentChatButton /> ) );
+
+// 		// const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+
+
+// 	} );
+} );

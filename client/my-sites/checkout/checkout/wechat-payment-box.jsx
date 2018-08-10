@@ -38,7 +38,7 @@ export class WechatPaymentBox extends PureComponent {
 	static propTypes = {
 		cart: PropTypes.object.isRequired,
 		transaction: PropTypes.object.isRequired,
-		redirectTo: PropTypes.func.isRequired,
+		redirectTo: PropTypes.func.isRequired, // on success
 	};
 
 	constructor( props ) {
@@ -156,7 +156,7 @@ export class WechatPaymentBox extends PureComponent {
 		if ( userAgent.isMobile ) {
 			notices.info( translate( 'Redirecting you to the WeChat Pay mobile app to finalize payment.' ) );
 
-			location.href = result.redirect_url;
+			location.assign( result.redirect_url );
 
 			// Redirect on mobile
 			return;
