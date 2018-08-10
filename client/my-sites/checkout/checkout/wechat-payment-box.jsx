@@ -239,7 +239,7 @@ export class WechatPaymentBox extends PureComponent {
 		// Wechat qr codes get set on desktop instead of redirecting
 		if ( this.state.redirectUrl ) {
 			return <React.Fragment>
-				<QueryOrderTransaction orderId={ this.state.orderId } pollIntervalMs={ 2000 } />
+				<QueryOrderTransaction orderId={ this.state.orderId } pollIntervalMs={ 1000 } />
 
 				<p className="checkout__payment-qrcode-instruction">
 					{ translate( 'Scan the barcode to confirm your %(price)s payment with WeChat Pay.', {

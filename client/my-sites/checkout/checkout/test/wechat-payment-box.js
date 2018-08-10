@@ -9,6 +9,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { identity } from 'lodash';
+import QRCode from 'qrcode.react';
 
 /**
  * Internal dependencies
@@ -49,15 +50,19 @@ jest.mock( '../terms-of-service', () => {
 	const react = require( 'react' );
 	return class TermsOfService extends react.Component {};
 } );
-
 import TermsOfService from '../terms-of-service';
 
 jest.mock( '../payment-chat-button', () => {
 	const react = require( 'react' );
 	return class PaymentChatButton extends react.Component {};
 } );
-
 import PaymentChatButton from '../payment-chat-button';
+
+jest.mock( 'components/data/query-order-transaction', () => {
+	const react = require( 'react' );
+	return class QueryOrderTransaction extends react.Component {};
+} );
+import QueryOrderTransaction from 'components/data/query-order-transaction';
 
 
 // Gets rid of warnings such as 'UnhandledPromiseRejectionWarning: Error: No available storage method found.'
@@ -81,7 +86,7 @@ const defaultProps = {
 	redirectTo: identity
 };
 
-describe( 'WechatPaymentBox - Pay Box', () => {
+describe( 'WechatPaymentBox', () => {
 	test( 'has correct components and css', () => {
 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
 		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
@@ -147,10 +152,8 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 			expect( ! wrapper.contains( <PaymentChatButton /> ) );
 		} );
 	} );
-} );
 
-describe( 'WechatPaymentBox - Source Response Handler', () => {
-	test( 'redirect on mobile', () => {
+	test( 'redirects on mobile', () => {
 		Object.defineProperty( navigator, "userAgent", {	value: "ios", writable: true } );
 		location.assign = jest.fn(); // https://github.com/facebook/jest/issues/890#issuecomment-295939071
 
@@ -164,7 +167,7 @@ describe( 'WechatPaymentBox - Source Response Handler', () => {
 		expect( location.assign ).toHaveBeenCalledWith( response.redirect_url );
 	} );
 
-	test( 'no redirect on desktop', () => {
+	test( 'does not redirect on desktop', () => {
 		Object.defineProperty( navigator, "userAgent", {	value: "windows", writable: true } );
 		location.assign = jest.fn();
 
@@ -182,7 +185,21 @@ describe( 'WechatPaymentBox - Source Response Handler', () => {
 
 	} );
 
-	test( 'enable pay button on error' , () => {
+	test( 'displays a qr code on desktop', () => {
+		Object.defineProperty( navigator, "userAgent", {	value: "windows", writable: true } );
+
+		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+		const instance = wrapper.instance();
+
+		const response = {  redirect_url: 'https://redirect', order_id: 1 };
+
+		instance.handleTransactionResponse( null, response );
+
+		expect( wrapper.contains( <QRCode value={ response.redirect_url } /> ) );
+		expect( wrapper.contains( <QueryOrderTransaction orderId={ response.order_id } pollIntervalMs={ 1000 } /> ) );
+	} );
+
+	test( 'unblocks user and enables pay button on response error' , () => {
 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
 		const instance = wrapper.instance();
 
@@ -191,15 +208,9 @@ describe( 'WechatPaymentBox - Source Response Handler', () => {
 		expect( instance.state.submitEnabled ).toBe( true );
 	});
 
-// describe( 'WechatPaymentBox - QR Code Display', () => {
-// 	test( 'display a qr code', () => {
+	// test( '', () => {
+	// 	jest.mock( 'page', identity );
 
-// 		// const wrapper = shallow( <WechatPaymentBox { ...props } /> );
+	// } );
 
-// 		// expect( wrapper.contains( <PaymentChatButton /> ) );
-
-// 		// const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
-
-
-// 	} );
-} );
+});
