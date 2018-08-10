@@ -150,82 +150,44 @@ describe( 'WechatPaymentBox - Pay Box', () => {
 } );
 
 describe( 'WechatPaymentBox - Source Response Handler', () => {
-	test( 'redirect on redirect_url', () => {
+	test( 'redirect on mobile', () => {
+		navigator.userAgent = "iOS safari";
 		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+		const instance = wrapper.instance();
 
-		console.log(wrapper.instance().handleTransactionResponse);
+		location.href = 'https://test';
 
-		expect( wrapper.find( '.checkout__payment-box-section' ) ).toHaveLength( 1 );
-		expect( wrapper.find( '.checkout__payment-box-actions' ) ).toHaveLength( 1 );
-		expect( wrapper.contains( <TermsOfService /> ) );
+		instance.handleTransactionResponse( null, {  redirect_url: 'https://redirect', order_id: 1 } );
+
+		expect( location.href ).toEqual( 'https://redirect' );
+
+	} );
+	test( 'no redirect on desktop', () => {
+		navigator.userAgent = "windows";
+		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+		const instance = wrapper.instance();
+
+		location.href = 'https://test';
+
+		const response = {  redirect_url: 'https://redirect', order_id: 1 };
+
+		instance.handleTransactionResponse( null, response );
+
+		expect( location.href ).toEqual( 'https://test' );
+
+		expect( instance.state.redirectUrl ).toEqual( response.redirectUrl );
+		expect( instance.state.orderId ).toEqual( response.order_id );
+
 	} );
 
-	test( 'enable pay button on errors' , () => {
-		//
+	test( 'enable pay button on error' , () => {
+		const wrapper = shallow( <WechatPaymentBox { ...defaultProps } /> );
+		const instance = wrapper.instance();
+
+		instance.handleTransactionResponse( new Error( "error" ), null );
+
+		expect( instance.state.submitEnabled ).toBe( true );
 	});
-
-	test( 'disable pay button on redirect' , () => {
-		//
-	});
-
-	test( 'set redirectUrl on desktop' , () => {
-		//
-	});
-
-	test( 'redirect on mobile' , () => {
-		//
-	});
-
-// handleTransactionResponse(error, result) {
-// 		if ( error ) {
-// 			this.setState( { submitEnabled: true } );
-
-// 			if ( error.message ) {
-// 				notices.error( error.message );
-// 			} else {
-// 				notices.error( translate( "We've encountered a problem. Please try again later." ) );
-// 			}
-
-// 			return;
-// 		}
-
-// 		if ( ! result || ! result.redirect_url ) {
-// 			notices.error( translate( "We've encountered a problem. Please try again later." ) );
-
-// 			this.setState( { submitEnabled: true } );
-
-// 			return;
-// 		}
-
-// 		analytics.ga.recordEvent( 'Upgrades', 'Clicked Checkout With Wechat Payment Button' );
-// 		analytics.tracks.recordEvent( 'calypso_checkout_with_redirect_wechat' );
-
-// 		// The Wechat payment type only redirect when on mobile as redirect urls
-// 		// are Wechat Pay mobile application urls: e.g. weixin://wxpay/bizpayurl?pr=RaXzhu4
-// 		const userAgent = new UserAgent().parse( navigator.userAgent );
-
-// 		if ( userAgent.isMobile ) {
-// 			notices.info( translate( 'Redirecting you to the WeChat Pay mobile app to finalize payment.' ) );
-
-// 			this.setState( { submitEnabled: false } );
-
-// 			location.href = result.redirect_url;
-
-// 			// Redirect on mobile
-// 			return;
-// 		}
-
-// 		// Display on desktop
-// 		notices.info( translate( 'Please scan the WeChat Payment barcode.', {
-// 			comment: 'Instruction to scan the on screen barcode.'
-// 		} ) );
-
-// 		this.setState( {
-// 			redirectUrl: result.redirect_url,
-// 			orderId: result.order_id,
-// 			submitEnabled: false,
-// 		} );
-// 	}
 
 // describe( 'WechatPaymentBox - QR Code Display', () => {
 // 	test( 'display a qr code', () => {
